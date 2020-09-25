@@ -67,9 +67,11 @@ For example addFlavor("Rainbow Sherbert", originalFlavors) should return ["Rainb
 
 function addFlavor(array, newFlavors){
 
-    const newArray = [...array]
-    newArray.unshift(newFlavors)
-    return newArray
+    array.unshift(newFlavors)
+    return array
+    // const newArray = [...array]
+    // newArray.unshift(newFlavors)
+    // return newArray
 
 }
 
@@ -87,8 +89,11 @@ For example removeLastFlavor(originalFlavors) would return ["Rainbow Sherbert", 
 
 function removeLastFlavor(array){
 
-    array.pop();
-    return array;
+    array.pop()
+    return array
+    // const lastFlavor = [...array]
+    // lastFlavor.pop();
+    // return lastFlavor
 
 }
 
@@ -104,13 +109,13 @@ Your function should accept:
 
 For example, getFlavorByIndex(originalFlavors, 2) would return "Black Walnut", assuming Rainbow Sherbert has been added successfully. */
 
-function getFlavorByIndex(array){
+function getFlavorByIndex(array, i){
 
-    return array[2];
+    return array[i];
 
 }
 
-console.log(getFlavorByIndex(originalFlavors, "Black Walnut"));
+console.log(getFlavorByIndex(originalFlavors, 2));
 
 /* Task 5: As corporate wants to add more and more flavors to their lineup, they've realized that they need to remove flavors based on flavor name, as opposed to just arbitrarily removing the first or last flavor. Your task is to get an index by flavor name, and remove that flavor from the array. 
 
@@ -125,14 +130,15 @@ Hint: You can use .splice() for this
 
 */
 
-function removeFlavorByName(array){
+function removeFlavorByName(array, flavor){
 
-    array.splice(30)
+    const index = array.indexOf(flavor)
+    array.splice(index, 1)
     return array
 
 }
 
-console.log(removeFlavorByName(originalFlavors));
+console.log(removeFlavorByName(originalFlavors, "Vanilla"));
 
 
 /* Task 6: With all of these changes going on, we don't want to lose track of the actual, original 31 flavors. Write a function called copy that makes a copy of the array. 
@@ -168,13 +174,18 @@ DO NOT USE ADVANCED ARRAY METHODS (i.e. .filter) to solve this problem.
 
 hint - you can use the .includes method to help you solve this */
 
-function filterByWord(/*code here*/){
+function filterByWord(array, flavor){
 
-    /*code here*/
-
+    const filteredArray = []
+    for (let i = 0; i < array.length; i++){
+        if (array[i].includes(flavor)){
+            filteredArray.push(array[i])
+        }
+    }
+    return filteredArray
 }
 
-
+console.log(filterByWord(originalFlavors, "Chocolate"))
 
 /* 🧁🍦🍨 STRETCH 🍨🍦🍫*/ 
 
